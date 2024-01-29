@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ex07 - Debugging</title>
+  </head>
+  <body>
+    <script>
+      // Part 1 - Debugging function calls
+      // A simple function
+      //   function doStuff() {
+      //     alert("I was called successfully");
+      //   }
+
+      //   try {
+      //     doStuff();
+      //   } catch (error) {
+      //     console.log(error.message);
+      //   }
+
+      // Part 2 - Syntax Errors
+      //   function checkAge(age) {
+      //     if (age >= 18 && age <= 65) {
+      //       document.write("<p>You are insurable</p>");
+      //     }
+      //   }
+
+      //   checkAge(44);
+
+      // Part 3 - Using throw
+
+      //   let val = 5000000;
+      //   let kaboom = null;
+
+      //   console.log(val / kaboom);
+      //   if (isFinite(val / kaboom)) {
+      //     kaboom = val / kaboom;
+      //   } else {
+      //     throw new Error("infinite");
+      //   }
+
+      // // Part 4 - Catching errors in the stack
+
+      let val = 5000000;
+      let kaboom = null;
+
+      function causesError(num1, num2) {
+        let val = num1;
+        let kaboom = num2;
+        if (isFinite(val / kaboom)) {
+          kaboom = val / kaboom;
+        } else {
+          throw new TypeError("Your operation causes a type exception");
+        }
+      }
+
+      causesError(val, kaboom);
+
+      console.log(
+        `I will only be reached if the function completes its execution`
+      );
+    </script>
+  </body>
+</html>
