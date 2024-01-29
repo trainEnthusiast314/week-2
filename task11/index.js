@@ -43,17 +43,29 @@ const mouseOver = (event) => {
 document
   .querySelector("#tnrParagraph")
   .addEventListener("mouseover", mouseOver);
-document
-  .querySelector("#tnrParagraph")
-  .addEventListener("mouseleave", mouseLeave);
-function mouseLeave(event) {
+document.querySelector("#tnrParagraph").addEventListener("mouseout", mouseOut);
+function mouseOut(event) {
   event.target.style.backgroundColor = "yellow";
 }
-console.dir(blueParagraph);
+
 function elementClick(event) {
   event.target.style.backgroundColor = "white";
   event.target.textContent = "i have no event listeners attached to me now";
-  event.target.removeEventListener("click");
-  event.target.removeEventListener("mouseover");
-  event.target.removeEventListener("mouseleave");
+  document.querySelector("#fonts").removeEventListener("click", elementClick);
+  event.target.removeEventListener("click", elementClick);
+  event.target.removeEventListener("mouseover", mouseOver);
+  event.target.removeEventListener("mouseout", mouseOut);
+  if (event.target.id === "tnrParagraph") {
+    blueParagraph.textContent = "Event listenners enabled";
+    blueParagraph.addEventListener("click", elementClick);
+    blueParagraph.addEventListener("mouseover", mouseOver);
+    blueParagraph.addEventListener("mouseout", mouseOut);
+  } else {
+    tnrParagraph.textContent = "event listeners enabled";
+    tnrParagraph.addEventListener("click", elementClick);
+    tnrParagraph.addEventListener("mouseover", mouseOver);
+    tnrParagraph.addEventListener("mouseout", mouseOut);
+  }
 }
+
+tnrParagraph.addEventListener("click", elementClick);
