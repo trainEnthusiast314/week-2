@@ -44,5 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("invalid age or name");
     }
   });
-  console.log(dataBind);
+  const add = document.getElementById("add");
+  function addItem() {
+    let node = document.createElement("div");
+    node.innerHTML = `<span>hello</span>`;
+    document.getElementById("add").appendChild(node);
+  }
+  add.addEventListener("click", addItem);
 });
