@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
   dataBind.list = () => {
-    console.log(data);
     const newUl = document.createElement("ul");
     const newLi = document.createElement("li");
     const content = document.createTextNode(
@@ -45,4 +44,5 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("invalid age or name");
     }
   });
+  console.log(dataBind);
 });
