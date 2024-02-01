@@ -4,10 +4,21 @@
 
         <script src="databind.js" defer></script>
 <script>
-let data = {
-    "telephone": "123456",
-    "address": "abc"
-}
+// let data = {
+//     "telephone": "123456",
+//     "address": "abc"
+// }
+
+let data=JSON.parse(sessionStorage.getItem("data"))
+
+fetch('https://dummyjson.com/users/1').then(res=>{
+    return res.json()
+}).then(res=>{
+    console.log(res)
+    data=res
+    dataBind.display()
+
+})
 </script>
 
     </head>
@@ -22,6 +33,9 @@ let data = {
         <p>Telephone: <span data="telephone"></span></p>
         <p>Address: <span data="address"></span></p>
 
+        <p>Age: <span data="age"></span></p>
+        <p>Forename: <span data="firstName"></span></p>
+        <p>Eye Colour: <span data="eyeColor"></span></p>
     </body>
 </html>
 
