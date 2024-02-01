@@ -14,11 +14,14 @@ let data=JSON.parse(sessionStorage.getItem("data"))
 fetch('https://dummyjson.com/users/1').then(res=>{
     return res.json()
 }).then(res=>{
-    console.log(res)
+    
     data=res
     dataBind.display()
 
 })
+
+
+
 </script>
 
     </head>
@@ -31,7 +34,7 @@ fetch('https://dummyjson.com/users/1').then(res=>{
         
         <h1>Display Data</h1>
         <p>Telephone: <span data="telephone"></span></p>
-        <p>Address: <span data="address"></span></p>
+        <p>Address: <span data="address.city"></span></p>
 
         <p>Age: <span data="age"></span></p>
         <p>Forename: <span data="firstName"></span></p>
