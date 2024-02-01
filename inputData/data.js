@@ -38,17 +38,36 @@ document.addEventListener("DOMContentLoaded", () => {
     if (/^\d+$/.test(age.value) && /^[a-zA-Z]+$/gim.test(username.value)) {
       dataBind.set("username", username.value);
       dataBind.set("age", age.value);
-      //dataBind.display();
+      dataBind.display();
       dataBind.list();
+      dataBind.save();
     } else {
       alert("invalid age or name");
     }
   });
-  const add = document.getElementById("add");
-  function addItem() {
+
+  function addItem(templateName) {
+    let template = document.querySelector(
+      `[data-template="${templateName}"]`
+    ).innerHTML;
+    template.replaceAll("{count}");
     let node = document.createElement("div");
-    node.innerHTML = `<span>hello</span>`;
-    document.getElementById("add").appendChild(node);
+    node.innerHTML = template;
+    document.getElementById("itemList").appendChild(node);
   }
-  add.addEventListener("click", addItem);
+  //add.addEventListener("click", addItem);
+  fetch("https://cat-fact.herokuapp.com/facts")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      let catNode = document.createElement("div");
+      catNode.innerHTML = `<span>${res[0].text}</span>`;
+      //add.appendChild(catNode);
+    });
+  //how to save data to local storage better then cookies
+  dataBind.save = () => {
+    sessionStorage.setItem("username", JSON.stringify(data["username"]));
+    sessionStorage.setItem("age", JSON.stringify(data["age"]));
+  };
 });
