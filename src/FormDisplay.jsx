@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 function FormDisplay({ formItem }) {
+  //variables
   const [product, setProduct] = useState("");
+  //api call
   useEffect(() => {
     const id = Math.floor(Math.random() * 30) + 1;
     axios
@@ -13,6 +15,7 @@ function FormDisplay({ formItem }) {
         console.log(err);
       });
   }, [setProduct]);
+  //render
   return (
     <div>
       {formItem.isFilled ? (

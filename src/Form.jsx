@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function Form({ setFormItem }) {
+  //variables
   const [transportChoice, setTransportChoice] = useState("Car");
   const [time, setTime] = useState("");
   const [name, setName] = useState("");
@@ -24,9 +25,7 @@ function Form({ setFormItem }) {
     setTime("");
     setTransportChoice("Car");
   };
-
   //render
-
   return (
     <div>
       <h1>Form</h1>

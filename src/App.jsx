@@ -7,7 +7,9 @@ import FormDisplay from "./FormDisplay";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
 function App() {
+  //variables
   const [formItem, setFormItem] = useState({ isFilled: false });
+  //render
   return (
     <BrowserRouter>
       <Nav />
