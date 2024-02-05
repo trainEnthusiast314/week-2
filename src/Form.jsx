@@ -2,60 +2,42 @@ import { useState } from "react";
 
 function Form({ setFormItem }) {
   //variables
-  const [transportChoice, setTransportChoice] = useState("Car");
-  const [time, setTime] = useState("");
-  const [name, setName] = useState("");
+  const [inputs, setInputs] = useState({});
   //handler functions
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setFormItem((items) => {
-      items.isFilled = true;
-      return { ...items, transportChoice, time, name };
+      return { ...items, ...inputs, isFilled: true };
     });
-    setName("");
-    setTime("");
-    setTransportChoice("Car");
+    setInputs({});
   };
+  const handleChange = (e) => {
+    return setInputs((item) => {
+      return { ...item, [e.target.name]: e.target.value };
+    });
+  };
+
   //render
   return (
     <div>
       <h1>Form</h1>
-      <form name="form">
+      <form name="form" onSubmit={handleSubmit}>
         <label>
-          date:{" "}
-          <input
-            type="date"
-            onChange={(e) => {
-              setTime(e.target.value);
-            }}
-            value={time}
-          />
+          date: <input type="date" name="time" onChange={handleChange} />
         </label>
         <br />
-        <select
-          name="transport"
-          id=""
-          onChange={(e) => {
-            setTransportChoice(e.target.value);
-          }}
-          value={transportChoice}>
+        <select name="transportChoice" id="" onChange={handleChange}>
           <option value="car">Car</option>
           <option value="bike">Bike</option>
           <option value="train">Train</option>
         </select>
         <br />
         <label>
-          name:{" "}
-          <input
-            type="text"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            value={name}
-          />
+          name: <input type="text" name="name" onChange={handleChange} />
         </label>
         <br />
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit" />
       </form>
     </div>
   );

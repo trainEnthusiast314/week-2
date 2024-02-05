@@ -7,6 +7,8 @@ function Nav() {
       <Link to="/display"> display </Link>
 
       <Link to="/hello"> Hello </Link>
+
+      <Link to="/">Select</Link>
     </nav>
   );
 }
