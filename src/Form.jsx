@@ -6,15 +6,6 @@ function Form({ setFormItem }) {
   const [time, setTime] = useState("");
   const [name, setName] = useState("");
   //handler functions
-  const handleChangeTransport = (e) => {
-    setTransportChoice(e.target.value);
-  };
-  const handleChangeTime = (e) => {
-    setTime(e.target.value);
-  };
-  const handleChangeName = (e) => {
-    setName(e.target.value);
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormItem((items) => {
@@ -31,13 +22,22 @@ function Form({ setFormItem }) {
       <h1>Form</h1>
       <form name="form">
         <label>
-          date: <input type="date" onChange={handleChangeTime} value={time} />
+          date:{" "}
+          <input
+            type="date"
+            onChange={(e) => {
+              setTime(e.target.value);
+            }}
+            value={time}
+          />
         </label>
         <br />
         <select
           name="transport"
           id=""
-          onChange={handleChangeTransport}
+          onChange={(e) => {
+            setTransportChoice(e.target.value);
+          }}
           value={transportChoice}>
           <option value="car">Car</option>
           <option value="bike">Bike</option>
@@ -45,7 +45,14 @@ function Form({ setFormItem }) {
         </select>
         <br />
         <label>
-          name: <input type="text" onChange={handleChangeName} value={name} />
+          name:{" "}
+          <input
+            type="text"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            value={name}
+          />
         </label>
         <br />
         <input type="submit" onClick={handleSubmit} />
