@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 function FormDisplay({ formItem }) {
   //variables
   const [product, setProduct] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+
   //api call
+
   useEffect(() => {
     setIsLoaded(false);
     axios
@@ -29,6 +32,7 @@ function FormDisplay({ formItem }) {
       console.log(err.message);
     }
   };
+
   //render
   return (
     <div>

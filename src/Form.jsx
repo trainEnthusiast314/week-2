@@ -17,6 +17,7 @@ function Form({ setFormItem }) {
       return { ...item, [e.target.name]: e.target.value };
     });
   };
+  console.log(inputs);
 
   //render
   return (

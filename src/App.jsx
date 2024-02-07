@@ -7,6 +7,7 @@ import FormDisplay from "./FormDisplay";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Nav";
 import DropDownList from "./DropDownList";
+import Test from "./Test";
 function App() {
   //variables
   const [formItem, setFormItem] = useState({ isFilled: false });
